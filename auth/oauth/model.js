@@ -38,7 +38,7 @@ module.exports = {
       clientId: clientId,
       clientSecret: clientSecret,
       grants: ['authorization_code', 'refresh_token'],
-      redirectUris: ['http://localhost:3030/client/app'],
+      redirectUris: ['http://localhost:5678/rest/oauth2-credential/callback'],
     }
     return new Promise(resolve => {
       resolve(db.client)
@@ -140,6 +140,7 @@ module.exports = {
       .createHash('sha1')
       .update(seed)
       .digest('hex')
+    
     return code
   },
   saveAuthorizationCode: (code, client, user) => {

@@ -41,7 +41,7 @@ describe('/oauth', () => {
             .send({
               client_id: 'test_client_id',
               response_type: 'code',
-              redirect_uri: 'http://localhost:3030/client/app',
+              redirect_uri: 'http://localhost:5678/rest/oauth2-credential/callback',
               state: 'test_state',
               username: user.username,
               password: user.password,
@@ -53,7 +53,7 @@ describe('/oauth', () => {
               const newLocation = res.redirects[0]
 
               if(user.valid) {
-                const beginning = 'http://localhost:3030/client/app?code='
+                const beginning = 'http://localhost:5678/rest/oauth2-credential/callback?code='
                 newLocation.should.include(beginning)
                 const expectedState = 'state=test_state'
                 newLocation.should.include(expectedState)
